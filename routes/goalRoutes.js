@@ -1,15 +1,21 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {getGoals, postGoal, updateGoal, deleteGoal} = require('../controllers/goalsController');
+const {
+  getGoals,
+  postGoal,
+  updateGoal,
+  deleteGoal,
+} = require("../controllers/goalsController");
 
-router.get('/', getGoals);
+router.route("/").get(getGoals).post(postGoal);
 
-router.post('/', postGoal);
+router.route("/:id").delete(deleteGoal).put(updateGoal);
+// router.get("/", getGoals);
 
-router.put('/:id', updateGoal);
+// router.post("/", postGoal);
 
+// router.put("/:id", updateGoal);
 
-
-router.delete('/:id', deleteGoal);
+// router.delete("/:id", deleteGoal);
 
 module.exports = router;
